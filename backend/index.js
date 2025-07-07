@@ -1,6 +1,10 @@
 const express = require('express');
 const app=express();
-const db=require('./models')
+const db=require('./models');
+
+//Routers
+const postRouter=require("./routes/users");
+app.use("/users",postRouter);
 
 db.sequelize.sync().then(()=>{    //create all the tables
     //whenever we run server it starts from here

@@ -1,24 +1,18 @@
 import './App.css';
-import axios from 'axios';
-import { useEffect,useState} from 'react';
+import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom' //instead of Swutch, we use Routes 
+import Home from './pages/Home';
+import Signup from './pages/Signup';
 
 function App() {
-  const [listOfUsers, setListOfUsers] = useState([]); //useState is a hook to manage state in functional components
-  useEffect(() => {
-    axios.get('http://localhost:3001/users').then((response)=>{
-      setListOfUsers(response.data); //setListOfUsers is a function to update the state with the data received from the server
-    })
-  }, []);
-  return (
+  return(
     <div className="App">
-     {listOfUsers.map((value, key) => {    //mapping the list of users to display them
-        return <div className="user">
-          <div className="id">{value.id}</div> 
-          <div className="name">{value.name}</div> 
-          <div className="email">{value.email}</div> 
-          <div className="role">{value.role}</div> 
-        </div>
-      })}
+      <Router>
+        <Link to="/signup"> Sign Up  </Link>
+        <Routes>
+          <Route path="/" element={<Home/>} />       {/* instead of exact component we use element */}
+          <Route path="/signup" element={<Signup/>} />
+        </Routes>
+      </Router>
     </div>
   );
 }

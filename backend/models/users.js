@@ -19,7 +19,7 @@ module.exports=(sequelize,DataTypes)=>{
             allowNull: false,
         }
     }); //Users-table name
-    // name, email,password,role-attributes
+    // name, email,password,role-attributes along with some default aattributes
     
 
     return Users

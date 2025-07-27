@@ -1,5 +1,8 @@
 const express = require('express');
 const app=express();
+
+app.use(express.json()); //to parse json data from the request body 
+
 const db=require('./models');
 
 //Routers

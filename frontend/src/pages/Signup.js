@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import '../pagescss/Signup.css';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 function Signup() {
     const initialValues = {
@@ -42,7 +43,9 @@ function Signup() {
 
 
     const onSubmit = (data) => {
-        console.log(data);
+        axios.get('http://localhost:3001/users').then((response)=>{
+        setListOfUsers(response.data); //setListOfUsers is a function to update the state with the data received from the server
+        });
     };
 
     return (

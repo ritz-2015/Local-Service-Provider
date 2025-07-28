@@ -28,7 +28,11 @@
   font-weight: 600;
   color: #333;
   font-size: 14px;
+  text-align: left;       /* ensures left alignment */
+  width: 100%;            /* makes label stretch full width */
+  display: block;         /* allows text-align to apply properly */
 }
+
 
 /* Inputs and dropdown */
 .formContainer input,
@@ -64,4 +68,13 @@
 
 .formContainer button:hover {
   background-color: #0056b3;
+}
+
+/* Error message styling */
+.formContainer span {
+  color: red;
+  font-size: 12px;
+  text-align: right;
+  display: block;
+  margin-bottom: 4px;
 }

@@ -1,27 +1,66 @@
 import React from 'react';
-import axios from 'axios';
-import { useEffect,useState} from 'react';
+import '../pagescss/Home.css';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
-    const [listOfUsers, setListOfUsers] = useState([]); //useState is a hook to manage state in functional components
-    useEffect(() => {
-    axios.get('http://localhost:3001/users').then((response)=>{
-      setListOfUsers(response.data); //setListOfUsers is a function to update the state with the data received from the server
-    })
-    }, []);
+  const navigate = useNavigate();
 
   return (
-    <div>
-      {listOfUsers.map((value, key) => {    //mapping the list of users to display them
-        return <div className="user">
-          <div className="id">{value.id}</div> 
-          <div className="name">{value.name}</div> 
-          <div className="email">{value.email}</div> 
-          <div className="role">{value.role}</div> 
+    <div className="home-container">
+      <header className="home-header">
+        <h1>Welcome to Locally</h1>
+        <p>Your trusted local service provider platform</p>
+      </header>
+
+      <section className="overview">
+        <h2>Services We Offer</h2>
+        <p>
+          Find trusted maids, electricians, plumbers, nannies, and many more
+          professionals — all verified and available in your local area.
+        </p>
+      </section>
+
+      <section className="how-it-works">
+        <h2>How It Works</h2>
+        <div className="flowchart">
+          <div className="step">
+            <div className="bubble">
+              <span className="bubble-number">1</span>
+              <span className="bubble-text">Sign Up</span>
+            </div>
+          </div>
+          <div className="wave">➝</div>
+          <div className="step">
+            <div className="bubble">
+              <span className="bubble-number">2</span>
+              <span className="bubble-text">Browse</span>
+            </div>
+          </div>
+          <div className="wave">➝</div>
+          <div className="step">
+            <div className="bubble">
+              <span className="bubble-number">3</span>
+              <span className="bubble-text">Connect</span>
+            </div>
+          </div>
+          <div className="wave">➝</div>
+          <div className="step">
+            <div className="bubble">
+              <span className="bubble-number">4</span>
+              <span className="bubble-text">Get the Job Done</span>
+            </div>
+          </div>
         </div>
-      })}
+      </section>
+
+
+
+      <section className="cta-buttons">
+        <button onClick={() => navigate('/hire')}>Hire a Service</button>
+        <button onClick={() => navigate('/join')}>Join as a Provider</button>
+      </section>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

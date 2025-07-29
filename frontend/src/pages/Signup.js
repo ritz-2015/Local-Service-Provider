@@ -43,8 +43,8 @@ function Signup() {
 
 
     const onSubmit = (data) => {
-        axios.get('http://localhost:3001/users').then((response)=>{
-        setListOfUsers(response.data); //setListOfUsers is a function to update the state with the data received from the server
+        axios.post('http://localhost:3001/users',data).then((response)=>{
+        console.log("Working");
         });
     };
 

@@ -1,0 +1,108 @@
+.home-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
+  text-align: center;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.home-header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.home-header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.overview,
+.how-it-works {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.overview h2,
+.how-it-works h2 {
+  color: #34495e;
+  margin-bottom: 1rem;
+}
+
+.how-it-works ol {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 1.2rem;
+}
+
+.cta-buttons {
+  margin-top: 3rem;
+}
+
+.cta-buttons button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-buttons button:hover {
+  background-color: #2980b9;
+}
+
+.flowchart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.step {
+  text-align: center;
+}
+
+.bubble {
+  width: 120px;
+  height: 120px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.bubble:hover {
+  transform: scale(1.05);
+}
+
+.bubble-number {
+  font-size: 1.5rem;
+}
+
+.bubble-text {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.wave {
+  font-size: 2rem;
+  color: #2980b9;
+}

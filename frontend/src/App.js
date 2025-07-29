@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <Router>
         <Link to="/signup"> Sign Up  </Link>
+        <Link to="/"> Home  </Link>
         <Routes>
           <Route path="/" element={<Home/>} />       {/* instead of exact component we use element */}
           <Route path="/signup" element={<Signup/>} />

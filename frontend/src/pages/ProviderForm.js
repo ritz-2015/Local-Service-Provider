@@ -6,6 +6,7 @@ import '../pagescss/ProviderForm.css';
 function ProviderForm() {
   const [formData, setFormData] = useState({
     category: "",
+    otherCategory: "",
     experience: "",
     timeSlots: [],
     bio: "",
@@ -13,8 +14,8 @@ function ProviderForm() {
     idProof: null,
   });
 
-  const categories = ["Maid", "Plumber", "Electrician", "Nanny","Any"];
-  const timeOptions = ["Morning", "Afternoon", "Evening","Any"];
+  const categories = ["Maid", "Plumber", "Electrician", "Nanny", "Any", "Other"];
+  const timeOptions = ["Morning", "Afternoon", "Evening", "Any"];
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -36,7 +37,6 @@ function ProviderForm() {
     e.preventDefault();
     console.log("Provider Data:", formData);
 
-    // Example: POST to server
     const formDataToSend = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
       if (Array.isArray(value)) {
@@ -65,13 +65,20 @@ function ProviderForm() {
           ))}
         </select>
 
+        {formData.category === "Other" && (
+          <>
+            <label>Specify Other Category</label>
+            <input type="text" name="otherCategory" value={formData.otherCategory} onChange={handleChange} required />
+          </>
+        )}
+
         <label>Experience (in years)</label>
         <input type="number" name="experience" value={formData.experience} onChange={handleChange} required />
 
         <label>Available Time Slots</label>
-        <div className="time-slots">
+        <div className="time-slots" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
           {timeOptions.map((slot) => (
-            <label key={slot}>
+            <label key={slot} style={{ display: 'flex', alignItems: 'center' }}>
               <input
                 type="checkbox"
                 checked={formData.timeSlots.includes(slot)}

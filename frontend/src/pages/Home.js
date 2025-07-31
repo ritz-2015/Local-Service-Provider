@@ -56,9 +56,10 @@ function Home() {
 
 
       <section className="cta-buttons">
-        <button onClick={() => navigate('/hire')}>Hire a Service</button>
-        <button onClick={() => navigate('/join')}>Join as a Provider</button>
+        <button onClick={() => navigate('/signup?role=customer')}>Hire a Service</button>
+        <button onClick={() => navigate('/signup?role=provider')}>Join as a Provider</button>
       </section>
+
     </div>
   );
 }

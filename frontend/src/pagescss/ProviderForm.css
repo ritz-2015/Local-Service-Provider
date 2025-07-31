@@ -1,0 +1,48 @@
+.provider-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.provider-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.provider-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.provider-form input,
+.provider-form select,
+.provider-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.time-slots label {
+  margin-right: 1rem;
+}
+
+.provider-form button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.7rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.provider-form button:hover {
+  background: #2980b9;
+}

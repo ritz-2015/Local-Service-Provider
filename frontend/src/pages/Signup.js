@@ -1,22 +1,27 @@
 import React from 'react';
+import { useLocation,useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import '../pagescss/Signup.css';
 import * as Yup from 'yup';
 import axios from 'axios';
 
 function Signup() {
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const roleFromURL = queryParams.get('role') || "";  // 'provider' or 'customer'
+    const navigate = useNavigate();
+
     const initialValues = {
         name: "",
         email: "",
         phoneno: "",
         password: "",
         confirmPassword: "",
-        role: ""
+        role: roleFromURL,  // pre-fill from URL
     };
 
     const validationSchema = Yup.object().shape({
-        name: Yup.string()
-            .required("Name is required"),
+        name: Yup.string().required("Name is required"),
 
         email: Yup.string()
             .matches(/^[a-zA-Z0-9._%+-]+@gmail\.com$/, "Enter a valid Gmail address")
@@ -37,20 +42,23 @@ function Signup() {
             .oneOf([Yup.ref('password'), null], "Passwords must match")
             .required("Please confirm your password"),
 
-        role: Yup.string()
-            .required("Please select a user type"),
+        role: Yup.string().required("Please select a user type"),
     });
 
-
     const onSubmit = (data) => {
-        axios.post('http://localhost:3001/users',data).then((response)=>{
-        console.log("Working");
+        axios.post('http://localhost:3001/users', data).then((response) => {
+            console.log("User registered:", data);
+            if (data.role === "provider") {
+                navigate("/provider-form"); // 👈 go to extra form
+            } else {
+                alert("Sign Up Successful!");
+            }
         });
     };
 
     return (
         <div className="signup">
-            <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+            <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema} enableReinitialize>
                 <Form className="formContainer">
                     <label>Name</label>
                     <ErrorMessage name="name" component="span" />

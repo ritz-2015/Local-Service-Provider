@@ -8,9 +8,9 @@ router.get('/', async(req, res) => {
 }); 
 
 router.post('/',async(req,res)=>{
-  const post=req.body;  //post var consits of the 'post' body 
-  await Users.create(post);  //insert into the db
-  res.json(post);  //send back the same data as response 
+  const user=req.body;  //post var consits of the 'post' body 
+  await Users.create(user);  //insert into the db
+  res.json(user);  //send back the same data as response 
 })
 
 

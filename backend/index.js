@@ -8,8 +8,12 @@ app.use(cors());
 const db=require('./models');
 
 //Routers
-const postRouter=require("./routes/users");
-app.use("/users",postRouter);
+const userRouter=require("./routes/users");
+app.use("/users",userRouter);
+
+const serviceProviderRouter = require('./routes/serviceprovider');
+app.use('/serviceprovider', serviceProviderRouter);
+
 
 db.sequelize.sync().then(()=>{    //create all the tables
     //whenever we run server it starts from here

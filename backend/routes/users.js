@@ -5,7 +5,6 @@ const {Users}=require('../models') //{Users} is the name of js file in the model
 router.get('/', async(req, res) => {
   const listOfUsers = await Users.findAll(); //findAll() is a sequelize method to get all the data from the table
   res.json(listOfUsers); //send the data as json response
-  res.send('Users route is working');
 }); 
 
 router.post('/',async(req,res)=>{

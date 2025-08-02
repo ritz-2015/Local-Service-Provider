@@ -1,14 +1,27 @@
-module.exports=(sequelize,DataTypes)=>{
-    const Users=sequelize.define("Users",{
-        name:{
+module.exports = (sequelize, DataTypes) => {
+    const Users = sequelize.define("Users", {
+        userId: {  // 👈 define userId as primary key
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
+        name: {
             type: DataTypes.STRING,
-            allowNull:false
+            allowNull: false
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: { isEmail: true },
+        },
+        phoneno: {
+            type: DataTypes.BIGINT,
+            allowNull: false,
+            validate: {
+                min: 1000000000,
+                max: 999999999999999
+            }
         },
         password: {
             type: DataTypes.STRING,
@@ -18,9 +31,14 @@ module.exports=(sequelize,DataTypes)=>{
             type: DataTypes.ENUM("customer", "provider"),
             allowNull: false,
         }
-    }); //Users-table name
-    // name, email,password,role-attributes along with some default aattributes
-    
+    });
 
-    return Users
+    Users.associate = (models) => {
+        Users.hasOne(models.ServiceProvider, {
+            foreignKey: "userId",
+            onDelete: "CASCADE"
+        });
+    };
+
+    return Users;
 };
